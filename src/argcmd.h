@@ -10,7 +10,14 @@ struct ACmd {
     int (*exec)(int argc, const char** argv);
 };
 
+struct ACmdSetup {
+    const char sflag;
+    const char* lflag;
+};
+
+extern struct ACmdSetup acmd_setup;
+
 const char* acmd_error_msg(int err);
-int acmd_process_args(int cmdc, const struct ACmd* cmdv, int argc, char** argv);
+int acmd_process_args(int argc, char** argv, int cmdc, const struct ACmd* cmdv);
 
 #endif
